@@ -23,6 +23,7 @@ class WelcomeController extends Controller {
 	public function index($id = 0) {
 		$response = cURL::get('doota.chaoguo.rdlab.meilishuo.com/2.0/order/xhprof_list?page=' . $id);
 		$data = json_decode($response->body);
+
 		return view('xhprof', ['xhprofData' => $data->data]); 
 	}
 
