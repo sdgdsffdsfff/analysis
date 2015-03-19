@@ -13,6 +13,10 @@
 
 Route::get('/', 'WelcomeController@index');
 
+Route::get('/xhprof/{id}', [
+	'as' => 'xhprof', 'uses' => 'WelcomeController@index'
+]);
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
