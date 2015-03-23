@@ -6,6 +6,7 @@
 	<table width="100%" border="0" cellspacing="0" cellpadding="0">
 		<tr>
 			<th width="13"><input type="checkbox" class="checkbox" /></th>
+			<th>Key</th>
 			<th>Module</th>
 			<th>Action</th>
 			<th>Spend Time</th>
@@ -15,9 +16,10 @@
 		@foreach ($xhprofData as $key => $info) 
 		<tr>
 			<td><input type="checkbox" class="checkbox" /></td>
-			<td><h3><a href="#">{{ $key }}</a></h3></td>
-			<td>{{ $info->action }}</td>
-			<td>{{ $info->time_spend }}</td>
+			<td><h3><a href="http://xhprof.com/?run={{ $key }}" target="_blank">{{ $key }}</a></h3></td>
+			<td>{{ $info->module}}</td>
+			<td>{{ $info->action}}</td>
+			<td>{{ $info->time_spend}}</td>
 			<td>{{ $info->ctime }}</td>
 			<td><a href="#">详情</a>&nbsp;&nbsp;<a href="#">删除</a></td>
 		</tr>
