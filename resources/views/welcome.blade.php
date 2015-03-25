@@ -40,7 +40,7 @@
 		
 		<!-- Small Nav -->
 		<div class="small-nav">
-			<a href="#">Performance Analysis</a>
+			<a href="#">性能分析</a>
 			<span>&gt;</span>
 			{{ $current }}	
 		</div>

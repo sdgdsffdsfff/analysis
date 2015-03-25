@@ -23,6 +23,8 @@ Route::get('/snake_xhprof/{id?}', [
 
 Route::get('/config', 'ConfigController@index');
 
+Route::post('/config/add', 'ConfigController@add');
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([
