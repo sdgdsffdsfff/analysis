@@ -10,21 +10,30 @@ class WelcomeController extends Controller {
 	 *
 	 * @return void
 	 */
-	public function __construct()
-	{
+	public function __construct() {
 		$this->middleware('guest');
 	}
 
 	/**
-	 * Xhprof Performance Analysis
+	 * Xhprof Performance Analysis(virus)
 	 *
 	 * @return Response
 	 */
 	public function index($id = 0) {
-		$response = cURL::get('doota.chaoguo.rdlab.meilishuo.com/2.0/order/xhprof_list?page=' . $id);
+		$response = cURL::get(parent::DEV_HOST . '/2.0/order/xhprof_list?type=virus&page=' . $id);
 		$data = json_decode($response->body);
+		return view('xhprof', ['xhprofData' => $data->data, 'current' => 'Virus analysis', 'tab' => 'virus']); 
+	}
 
-		return view('xhprof', ['xhprofData' => $data->data]); 
+	/**
+	 * Xhprof Performance Analysis(snake)
+	 *
+	 * @return Response
+	 */
+	public function snake_xhprof($page = 0) {
+		$response = cURL::get(parent::DEV_HOST . '/2.0/order/xhprof_list?type=snake&page=' . $page);
+		$data = json_decode($response->body);
+		return view('xhprof_snake', ['xhprofData' => $data->data, 'current' => 'Snake analysis', 'tab' => 'snake']); 
 	}
 
 }

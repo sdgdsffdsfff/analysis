@@ -17,10 +17,6 @@
 				Welcome <a href="#"><strong>Admin</strong></a>
 				<span>|</span>
 				<a href="#">Help</a>
-				<span>|</span>
-				<a href="#">Profile Settings</a>
-				<span>|</span>
-				<a href="#">Log out</a>
 			</div>
 		</div>
 		<!-- End Logo + Top Nav -->
@@ -28,12 +24,9 @@
 		<!-- Main Nav -->
 		<div id="navigation">
 			<ul>
-			    <li><a href="#" class="active"><span>Xhprof Performance</span></a></li>
-			    <li><a href="#"><span>New Articles</span></a></li>
-			    <li><a href="#"><span>User Management</span></a></li>
-			    <li><a href="#"><span>Photo Gallery</span></a></li>
-			    <li><a href="#"><span>Products</span></a></li>
-			    <li><a href="#"><span>Services Control</span></a></li>
+			    <li><a href="/" @if ($tab == 'virus') class="active" @endif ><span>Virus Xhprof</span></a></li>
+			    <li><a href="/snake_xhprof" @if ($tab == 'snake') class="active" @endif ><span>Snake Xhprof</span></a></li>
+			    <li><a href="/config" @if ($tab == 'config') class="active" @endif ><span>Config</span></a></li>
 			</ul>
 		</div>
 		<!-- End Main Nav -->
@@ -49,7 +42,7 @@
 		<div class="small-nav">
 			<a href="#">Performance Analysis</a>
 			<span>&gt;</span>
-			Current Articles
+			{{ $current }}	
 		</div>
 		<!-- End Small Nav -->
 		
@@ -60,25 +53,7 @@
 			
 			<!-- Content -->
 			<div id="content">
-				
-				<!-- Box -->
-				<div class="box">
-					<!-- Box Head -->
-					<div class="box-head">
-						<h2 class="left">Current Articles</h2>
-						<div class="right">
-							<label>search articles</label>
-							<input type="text" class="field small-field" />
-							<input type="submit" class="button" value="search" />
-						</div>
-					</div>
-					<!-- End Box Head -->	
-
-					@yield('content')
-
-				</div>
-				<!-- End Box -->
-				
+				@yield('content')
 			</div>
 			<!-- End Content -->
 			

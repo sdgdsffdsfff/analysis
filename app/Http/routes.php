@@ -13,9 +13,15 @@
 
 Route::get('/', 'WelcomeController@index');
 
-Route::get('/xhprof/{id}', [
+Route::get('/xhprof/{id?}', [
 	'as' => 'xhprof', 'uses' => 'WelcomeController@index'
 ]);
+
+Route::get('/snake_xhprof/{id?}', [
+	'as' => 'snake_xhprof', 'uses' => 'WelcomeController@snake_xhprof'
+]);
+
+Route::get('/config', 'ConfigController@index');
 
 Route::get('home', 'HomeController@index');
 
