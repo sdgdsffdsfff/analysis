@@ -92,6 +92,7 @@ class ConfigController extends Controller {
 		$response = cURL::post($url, $param);
 
 		return redirect('/config');
+
 	}
 
 
