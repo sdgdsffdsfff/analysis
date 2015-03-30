@@ -25,6 +25,8 @@ Route::get('/config', 'ConfigController@index');
 
 Route::post('/config/add', 'ConfigController@add');
 
+Route::post('/config/delete', 'ConfigController@delete');
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([

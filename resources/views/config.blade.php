@@ -15,7 +15,7 @@
 		</div>
 		<!-- Table -->
 	</form>			
-	<div class="table">
+	<div class="table" id="snake_config">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<th width="13"><input type="checkbox" class="checkbox" /></th>
@@ -31,7 +31,9 @@
 					<td>{{ $module }}</td>
 					<td>{{ $actionInfo['name'] }}</td>
 					<td>{{ $actionInfo['switch'] }}</td>
-					<td><a href="/config/close">关闭</a>&nbsp;&nbsp;<a href="/config/delete">删除</a></td>
+					<td>
+						<a href="#" class="close">关闭</a>&nbsp;&nbsp;<a href="#" class="delete">删除</a>
+					</td>
 				</tr>
 				@endforeach
 			@endforeach
@@ -40,7 +42,7 @@
 	
 	<br />
 
-	<div class="table">
+	<div class="table" id="virus_config">
 		<table width="100%" border="0" cellspacing="0" cellpadding="0">
 			<tr>
 				<th width="13"><input type="checkbox" class="checkbox" /></th>
@@ -56,7 +58,7 @@
 					<td>{{ $module }}</td>
 					<td>{{ $actionInfo['name'] }}</td>
 					<td>{{ $actionInfo['switch'] }}</td>
-					<td><a href="/config/close">关闭</a>&nbsp;&nbsp;<a href="/config/delete">删除</a></td>
+					<td><a href="#">关闭</a>&nbsp;&nbsp;<a href="#" class="delete">删除</a></td>
 				</tr>
 				@endforeach
 			@endforeach

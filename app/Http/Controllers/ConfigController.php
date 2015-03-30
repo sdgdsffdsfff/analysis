@@ -95,5 +95,26 @@ class ConfigController extends Controller {
 
 	}
 
+	/**
+	 * 删除配置 
+	 *
+	 * @return string
+	 */
+	public function delete() {
+
+		$param = array(
+			'author' => $_POST['name'],
+			'module' => $_POST['module'],
+			'action' => $_POST['action'],
+			'framework' => $_POST['framework'],
+			'switch' => $_POST['swi'],
+		);
+
+
+		$url = self::DEV_HOST . '/2.0/order/xhprof_config_delete';
+		$response = cURL::post($url, $param);
+		file_put_contents('/tmp/del.log', print_r(array($url, $response, $param), 1), FILE_APPEND);
+
+	}
 
 }

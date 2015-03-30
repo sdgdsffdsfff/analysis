@@ -4,7 +4,7 @@
 	<meta http-equiv="Content-type" content="text/html; charset=utf-8" />
 	<title>Performance Anaylysis</title>
 	<link rel="stylesheet" href="css/style.css" type="text/css" media="all" />
-	<script src="js/jquery-migrate-1.2.1.min.js"></script>
+	<script src="http://cdn.bootcss.com/jquery/2.1.3/jquery.min.js"></script>
 </head>
 <body>
 <!-- Header -->
@@ -77,3 +77,39 @@
 	
 </body>
 </html>
+
+<script type="text/javascript">
+	$(function(){
+		
+		var name = $("div.box form div.form").find("input:checked").val();
+
+		$("#virus_config > table  td a.delete").click(function(){
+			var module = $(this).parent().parent().find("td").eq(1).text();
+			var action = $(this).parent().parent().find("td").eq(2).text();
+			var swi = $(this).parent().parent().find("td").eq(3).text();
+			$.ajax({
+				type:'post',
+				url: '/config/delete',
+				data: { module: module, action: action, name: name, swi: swi, framework: 'virus' },
+				success: function($data) {
+				},
+				dataType: 'json',
+			});
+		});
+
+		//删除配置
+		$("#snake_config > table  td a.delete").click(function(){
+			var module = $(this).parent().parent().find("td").eq(1).text();
+			var action = $(this).parent().parent().find("td").eq(2).text();
+			var swi = $(this).parent().parent().find("td").eq(3).text();
+			$.ajax({
+				type:'post',
+				url: '/config/delete',
+				data: { module: module, action: action, name: name, swi: swi, framework: 'snake' },
+				success: function($data) {
+				},
+				dataType: 'json',
+			});
+		});
+	});
+</script>
