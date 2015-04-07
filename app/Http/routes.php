@@ -27,6 +27,10 @@ Route::post('/config/add', 'ConfigController@add');
 
 Route::post('/config/delete', 'ConfigController@delete');
 
+Route::get('/rabbit', 'RabbitController@index');
+
+Route::get('/rabbit/receive', 'RabbitController@receive');
+
 Route::get('home', 'HomeController@index');
 
 Route::controllers([

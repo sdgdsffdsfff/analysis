@@ -27,6 +27,7 @@
 			    <li><a href="/" @if ($tab == 'virus') class="active" @endif ><span>Virus Xhprof</span></a></li>
 			    <li><a href="/snake_xhprof" @if ($tab == 'snake') class="active" @endif ><span>Snake Xhprof</span></a></li>
 			    <li><a href="/config" @if ($tab == 'config') class="active" @endif ><span>Config</span></a></li>
+			    <li><a href="/rabbit" @if ($tab == 'rabbit') class="active" @endif ><span>Rabbit</span></a></li>
 			</ul>
 		</div>
 		<!-- End Main Nav -->

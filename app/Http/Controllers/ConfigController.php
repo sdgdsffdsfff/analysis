@@ -22,6 +22,7 @@ class ConfigController extends Controller {
 			'chaoguo' => TRUE,
 			'hailongchen' => FALSE,
 			'yutingwu' => FALSE,
+			'yishuliu' => FALSE,
 		);
 
 		if (!empty($_GET['check_name'])) {
@@ -113,7 +114,6 @@ class ConfigController extends Controller {
 
 		$url = self::DEV_HOST . '/2.0/order/xhprof_config_delete';
 		$response = cURL::post($url, $param);
-		file_put_contents('/tmp/del.log', print_r(array($url, $response, $param), 1), FILE_APPEND);
 
 	}
 
