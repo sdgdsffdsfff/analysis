@@ -4,6 +4,7 @@ require __DIR__.'/../bootstrap/autoload.php';
 use PhpAmqpLib\Connection\AMQPConnection;
 use PhpAmqpLib\Message\AMQPMessage;
 
+//$host = '192.168.151.214';
 $host = 'localhost';
 $port = 5672;
 $user = 'guest';

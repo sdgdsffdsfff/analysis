@@ -9,7 +9,7 @@ class RabbitController extends Controller {
 		$this->middleware('guest');
 	}
 
-	private	$host = 'localhost';
+	private	$host = '192.168.151.214';
     private	$port = 5672;
 	private $user = 'guest';
 	private $pass = 'guest';
