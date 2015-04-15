@@ -13,40 +13,41 @@ $pass = 'guest';
 
 //创建连接
 $connection = new AMQPConnection($host, $port, $user, $pass);
-
 //获取通道
 $channel = $connection->channel();
 
 //队列名称
-$queueName = 'gc_test_1';
+$queueName = 'gc_test_5';
 //当队列不存在时是否会抛出一个错误信息，仍然不会被声明
 $passive = FALSE;
-//是否持久化(false:服务重启队列丢失)
+//是否持久化(false:服务重启时队列消息)
 $durable = TRUE;
-//仅服务于一个客户端
+//
 $exclusive = FALSE;
-//退出后队列不丢失,If set, the queue is deleted when all consumers have finished using it
+//退出后队列不丢失.If set, the queue is deleted when all consumers have finished using it
 $autoDelete = FALSE;
 //创建队列
 $channel->queue_declare($queueName, $passive, $durable, $exclusive, $autoDelete);
 
-$timeStart = microtime(TRUE);
-for ($i = 0; $i < 1000000; $i++) {
-	//消息 delivery_mode＝2，服务重启后消息不丢失
-	$word = "123456789.123456789.123456789." . $i;
-	$msg = new AMQPMessage($word, array('delivery_mode' => 2));
-	//发送
-	$routeKey = $queueName;
-	$exchange = '';
-	$channel->basic_publish($msg, $exchange, $routeKey);
+$callBack = function($msg) {
+	echo "[x] Received ", $msg->body, "\n";
+	sleep(substr_count($msg->body, '.'));
+	echo "[x] Done\n";
+	$msg->delivery_info['channel']->basic_ack($msg->delivery_info['delivery_tag']);
+};
 
-	echo " [ Sent $word ]\n";
+$channel->basic_qos(NULL, 1, NULL);
+
+$consumerTag = '';
+$noLocal = FALSE;
+$noACK = FALSE;
+$exclusive = FALSE;
+$noWait = FALSE;
+$channel->basic_consume($queueName, $consumerTag, $noLocal, $noACK, $exclusive, $noWait, $callBack);
+
+while(count($channel->callbacks)) {
+	$channel->wait();
 }
-$timeEnd = microtime(TRUE);
-
-$timeSpend = $timeEnd - $timeStart;
-
-echo "Time Spend:" . $timeSpend . "\n";
 
 $channel->close();
 $connection->close();
